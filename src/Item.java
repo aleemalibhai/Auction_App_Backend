@@ -46,12 +46,19 @@ public class Item {
     }
 
     public Item(String input) {
-        // TODO: parse input from line of file
+        this.itemName = input.substring(0, 19).trim();
+        this.sellerName = input.substring(20, 36).trim();
+        this.winningUser = input.substring(37, 51).trim();
+        this.daysLeft = Integer.parseInt(input.substring(52, 55));
+        this.highBid = Float.parseFloat(input.substring(56));
+
     }
 
     public String stringify() {
-        String str = "";
-        // TODO: return string version of Item to write
-        return str;
+        return (String.format("%-19s", this.itemName) + ' '
+                + String.format("%-14s", this.sellerName) + ' '
+                + String.format("%-14s", this.winningUser) + ' '
+                + String.format("%03d", this.daysLeft) + ' '
+                + String.format("%06.2f", this.highBid));
     }
 }
