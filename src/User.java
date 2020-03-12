@@ -28,10 +28,15 @@ public class User {
         this.credits = credits;
     }
 
+
+    /**
+     * parse input string to create user object
+     * @param input: String
+     * @return : User object
+     */
     public User(String input){
         // parse line from file into object
-        // UUUUUUUUUUUUUUU_TT_CCCCCCCCC
-        //       15         2     9
+        // of form UUUUUUUUUUUUUUU_TT_CCCCCCCCC
 
         // get rid of spaces on right
         this.username = input.substring(0, 15).trim();
@@ -39,6 +44,11 @@ public class User {
         this.credits = Double.parseDouble(input.substring(19));
     }
 
+    /**
+     * format object into for appropriate for writing to fileuserName
+     * @param : None
+     * @return : String representation of User to be written to file
+     */
     public String stringify(){
         return (String.format("%-15s", this.username)
                 + ' ' + this.acctType + ' '

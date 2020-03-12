@@ -45,6 +45,12 @@ public class Item {
         this.highBid = highBid;
     }
 
+
+    /**
+     * parse input string to create item object
+     * @param input: String
+     * @return : Item object
+     */
     public Item(String input) {
         this.itemName = input.substring(0, 19).trim();
         this.sellerName = input.substring(20, 36).trim();
@@ -54,6 +60,11 @@ public class Item {
 
     }
 
+    /**
+     * format object into for appropriate for writing to file
+     * @param : None
+     * @return : String representation of Item to be written to file
+     */
     public String stringify() {
         return (String.format("%-19s", this.itemName) + ' '
                 + String.format("%-14s", this.sellerName) + ' '
