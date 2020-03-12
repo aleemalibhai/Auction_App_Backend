@@ -37,7 +37,7 @@ public class Item {
         this.daysLeft = daysLeft;
     }
 
-    public float getHighBid() {
+    public double getHighBid() {
         return highBid;
     }
 
@@ -51,6 +51,9 @@ public class Item {
      * @param input: String
      * @return : Item object
      */
+    //default constructor
+    public Item(){}
+
     public Item(String input) {
         this.itemName = input.substring(0, 19).trim();
         this.sellerName = input.substring(20, 36).trim();
