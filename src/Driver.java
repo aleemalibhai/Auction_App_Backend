@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Iterator;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Driver {
 
@@ -56,6 +56,47 @@ public class Driver {
             items.add(newItem);
         }
         return items;
+    }
+
+    /**
+     * Writes the strings for ArrayList to the given file
+     * @param strings: ArrayList of type: String
+     * @param fileName: name of the file
+     */
+    public static void writeToFile(ArrayList<String> strings, String fileName){
+        File file = new File(fileName);
+        //checking if file exists
+        if(!file.exists()) {
+            System.out.println("ERROR: given filename doesn't exist");
+            return;
+        }
+
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try{
+           fw = new FileWriter(file);
+           bw = new BufferedWriter(fw);
+
+            //writing each String to the file
+            for(String string: strings){
+                bw.write(string + System.lineSeparator());
+            }
+        }
+        catch (IOException e){
+            System.out.println("ERROR: error in writing the file");
+        }
+        finally {
+            if(bw != null && fw != null){
+              try{
+                  bw.close();
+                  fw.close();
+              }
+              catch (IOException e){
+                  System.out.println("ERROR: I/O exception" + e);
+              }
+            }
+        }
     }
 
     public static void main(String[] args){
@@ -187,17 +228,47 @@ public class Driver {
                         //deducting credits from sellers's account
                         if(user.getUsername().equals(trans.get_sName())){
                             user.setCredits(user.getCredits() - trans.getCredits());
+                            System.out.println("Deducted " + trans.getCredits() + "credits from account of seller: " + user.getUsername());
                         }
                         //adding credits to user's account
                         if(user.getUsername().equals(trans.get_uName())){
                             user.setCredits(user.getCredits() + trans.getCredits());
+                            System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
                         }
                     }
                     break;
+
+                case("06")://addcredit
+                    for(User user: users){
+                        if(user.getUsername().equals(trans.get_uName())){
+                            user.setCredits(user.getCredits() + trans.getCredits());
+                            System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
+                        }
+                    }
+                    break;
+
+                case("00")://end of session
+                    //convert all Item objects to strings
+                    ArrayList<String> out_itemStrings = new ArrayList<>();
+                    for(Item item: items){
+                        out_itemStrings.add(item.stringify());
+                    }
+                    //write Strings to available items file
+                    writeToFile(out_itemStrings, itemsFile);
+
+                    //convert all User objects to strings
+                    ArrayList<String> out_userStrings = new ArrayList<>();
+                    for(User user: users){
+                        out_userStrings.add(user.stringify());
+                    }
+                    //write strings to current users file
+                    writeToFile(out_userStrings, usersFile);
             }
         }
 
     }
+    //TODO: what are we doing with the daily transaction file?
+    //TODO: dealing with bid days
 }
 
 
