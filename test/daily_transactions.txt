@@ -1,0 +1,62 @@
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0000 regUser         BS 950000.0000 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.0006 adminUser       AA 000100.00
+00 adminUser       AA 999999.0003 a                         fullUser        004 000004.00
+00 fullUser        FS 111111.1100 goodUser        SS 020000.00

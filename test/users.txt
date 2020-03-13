@@ -1,0 +1,4 @@
+goodUser        SS 020000.00
+adminUser       AA 999999.00
+regUser         BS 950000.00
+fullUser        FS 111111.11

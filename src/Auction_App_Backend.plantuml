@@ -1,0 +1,93 @@
+@startuml
+
+title __Auction App Backend Class Diagram__\n
+
+
+class Item {
+    - daysLeft : int
+    - highBid : float
+    - itemName : String
+    - sellerName : String
+    - winningUser : String
+    + Item()
+    + getDaysLeft()
+    + getHighBid()
+    + getItemName()
+    + getSellerName()
+    + getWinningUser()
+    + setDaysLeft()
+    + setHighBid()
+    + setItemName()
+    + setSellerName()
+    + setWinningUser()
+    + stringify()
+}
+
+class Transaction {
+    - bid : double
+    - credits : double
+    - daysLeft : int
+    - iName : String
+    - sName : String
+    - transactionCode : String
+    - type : String
+    - uName : String
+    + Transaction()
+    + getBid()
+    + getCredits()
+    + getDaysLeft()
+    + getTransactionCode()
+    + getType()
+    + get_iName()
+    + get_sName()
+    + get_uName()
+}
+
+class User {
+    - acctType : String
+    - credits : double
+    - username : String
+    + User()
+    + getAcctType()
+    + getCredits()
+    + getUsername()
+    + setAcctType()
+    + setCredits()
+    + setUsername()
+    + stringify()
+}
+
+class Driver {
+        {static} + getItems()
+        {static} + main()
+        {static} + writeToFile()
+        {static} - getUsers()
+        {static} - readFile()
+    }
+package Inputs <<Rectangle>> {
+    package "Merged Transaction File"  <<frame>> {
+    }
+
+    package "Old User File"  <<frame>> {
+    }
+
+    package "Old Item File" <<frame>> {
+    }
+}
+
+package Outputs <<Rectangle>> {
+    package "New User File"  <<frame>> {
+    }
+
+    package "New Item File" <<frame>> {
+    }
+}
+
+Inputs --> Driver
+Outputs <--- Driver
+
+Driver -u-* Item : creates
+Driver -u-* User : creates
+Driver -u-* Transaction : creates
+
+@enduml
