@@ -6,7 +6,7 @@ public class Transaction {
     private String type = null;                             // appears as TT in the docs
     private String rawString = null;                        // appears as string after XX_ in the docs
     private double credits;                                 // appears as CCCCCC... in the docs
-    private float bid;                                     // appears as PPPPPP... in the docs
+    private float bid;                                      // appears as PPPPPP... in the docs
     private int daysLeft;                                   // appears as DDD in the docs
 
     public String getTransactionCode() {
@@ -35,7 +35,7 @@ public class Transaction {
 
     public float getBid() {
         return bid;
-    }                               // returns Bid (highest or new)
+    }                                // returns Bid (highest or new)
 
     public int getDaysLeft() {
         return daysLeft;
