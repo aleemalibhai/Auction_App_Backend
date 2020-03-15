@@ -88,21 +88,21 @@ public class Driver {
         }
         finally {
             if(bw != null && fw != null){
-              try{
+                try{
                   bw.close();
                   fw.close();
-              }
-              catch (IOException e){
+                }
+                catch (IOException e){
                   System.out.println("ERROR: I/O exception" + e);
-              }
+                }
             }
         }
     }
 
     public static void main(String[] args){
-        String usersFile = "u.txt";
-        String itemsFile = "i.txt";
-        String tFile = "t.txt";
+        String usersFile = "../resources/users.txt";
+        String itemsFile = "../resources/items.txt";
+        String tFile = "../resources/daily_transactions.txt";
 
         //reading the user accounts file
         ArrayList<String> userStrings = new ArrayList<>(readFile(usersFile));;
@@ -267,8 +267,7 @@ public class Driver {
         }
 
     }
-    //TODO: what are we doing with the daily transaction file?
-    //TODO: dealing with bid days
+
 }
 
 
