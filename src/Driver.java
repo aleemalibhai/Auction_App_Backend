@@ -16,13 +16,21 @@ public class Driver {
     private static ArrayList<String> readFile(String fileName) {
         ArrayList<String> lines = new ArrayList<String>();
         try {
-            BufferedReader r = new BufferedReader(new FileReader(fileName));
-            String line;
-            while ((line = r.readLine()) != null) {
-                lines.add(line);
+            File file = new File(fileName);
+            if( file.exists()){
+                BufferedReader r = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = r.readLine()) != null) {
+                    lines.add(line);
+                }
+                r.close();
+                return lines;
             }
-            r.close();
-            return lines;
+            else{
+                System.out.println("ERROR: " + fileName + " doesn't exist");
+                return null;
+            }
+
         }
         catch (IOException e) {
             System.out.println("ERROR: could not open file " + fileName);
@@ -100,9 +108,9 @@ public class Driver {
     }
 
     public static void main(String[] args){
-        String usersFile = "../resources/users.txt";
-        String itemsFile = "../resources/items.txt";
-        String tFile = "../resources/daily_transactions.txt";
+        String usersFile = ".\\resources\\users.txt";
+        String itemsFile = ".\\resources\\items.txt";
+        String tFile = ".\\resources\\daily_transactions.txt";
 
         //reading the user accounts file
         ArrayList<String> userStrings = new ArrayList<>(readFile(usersFile));;
