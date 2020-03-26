@@ -43,7 +43,7 @@ public class Driver {
      * @param userStrings: an Arraylist<String> for user accounts
      * @return : an ArrayList<User>
      */
-    private static ArrayList<User> getUsers(ArrayList<String> userStrings) {
+    protected static ArrayList<User> getUsers(ArrayList<String> userStrings) {
         ArrayList<User> users = new ArrayList<>();
         for (String userString : userStrings) {
             User newUser = new User(userString);
