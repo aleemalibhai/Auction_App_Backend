@@ -1,11 +1,10 @@
-package test;
-
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
 public class ItemTest {
-
-
-
+    Item testItem = new Item("item_name           reg_user        admin           100 000001");
     /**
      *
      * Method: getItemName()
@@ -13,17 +12,7 @@ public class ItemTest {
      */
     @Test
     public void testGetItemName() throws Exception {
-        //TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setItemName(String itemName)
-     *
-     */
-    @Test
-    public void testSetItemName() throws Exception {
-        //TODO: Test goes here...
+        assertEquals("item_name", testItem.getItemName());
     }
 
     /**
@@ -33,18 +22,9 @@ public class ItemTest {
      */
     @Test
     public void testGetSellerName() throws Exception {
-        //TODO: Test goes here...
+        assertEquals("reg_user", testItem.getSellerName());
     }
 
-    /**
-     *
-     * Method: setSellerName(String sellerName)
-     *
-     */
-    @Test
-    public void testSetSellerName() throws Exception {
-        //TODO: Test goes here...
-    }
 
     /**
      *
@@ -53,17 +33,7 @@ public class ItemTest {
      */
     @Test
     public void testGetWinningUser() throws Exception {
-        //TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setWinningUser(String winningUser)
-     *
-     */
-    @Test
-    public void testSetWinningUser() throws Exception {
-        //TODO: Test goes here...
+        assertEquals("admin", testItem.getWinningUser());
     }
 
     /**
@@ -73,17 +43,7 @@ public class ItemTest {
      */
     @Test
     public void testGetDaysLeft() throws Exception {
-        //TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setDaysLeft(int daysLeft)
-     *
-     */
-    @Test
-    public void testSetDaysLeft() throws Exception {
-        //TODO: Test goes here...
+        assertEquals(100, testItem.getDaysLeft());
     }
 
     /**
@@ -93,17 +53,7 @@ public class ItemTest {
      */
     @Test
     public void testGetHighBid() throws Exception {
-        //TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setHighBid(float highBid)
-     *
-     */
-    @Test
-    public void testSetHighBid() throws Exception {
-        //TODO: Test goes here...
+        assertEquals(1, testItem.getHighBid(), 0.0);
     }
 
     /**
@@ -113,6 +63,6 @@ public class ItemTest {
      */
     @Test
     public void testStringify() throws Exception {
-        //TODO: Test goes here...
+        assertEquals("item_name           reg_user        admin           100 000001", testItem.stringify());
     }
 } 

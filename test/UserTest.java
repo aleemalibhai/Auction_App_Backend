@@ -1,12 +1,12 @@
-package test;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /** 
 * User Tester. 
 **/
-public class UserTest { 
-
+public class UserTest {
+    User testUser = new User("admin          AA 999999.45");
     /**
     *
     * Method: getUsername()
@@ -14,17 +14,7 @@ public class UserTest {
     */
     @Test
     public void testGetUsername() throws Exception {
-    //TODO: Test goes here...
-    }
-
-    /**
-    *
-    * Method: setUsername(String username)
-    *
-    */
-    @Test
-    public void testSetUsername() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("admin", testUser.getUsername());
     }
 
     /**
@@ -34,17 +24,7 @@ public class UserTest {
     */
     @Test
     public void testGetAcctType() throws Exception {
-    //TODO: Test goes here...
-    }
-
-    /**
-    *
-    * Method: setAcctType(String acctType)
-    *
-    */
-    @Test
-    public void testSetAcctType() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("AA", testUser.getAcctType());
     }
 
     /**
@@ -54,17 +34,7 @@ public class UserTest {
     */
     @Test
     public void testGetCredits() throws Exception {
-    //TODO: Test goes here...
-    }
-
-    /**
-    *
-    * Method: setCredits(double credits)
-    *
-    */
-    @Test
-    public void testSetCredits() throws Exception {
-    //TODO: Test goes here...
+        assertEquals(999999.45, testUser.getCredits(), 0.0);
     }
 
     /**
@@ -74,6 +44,6 @@ public class UserTest {
     */
     @Test
     public void testStringify() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("admin          AA 999999.45", testUser.stringify());
     }
 } 

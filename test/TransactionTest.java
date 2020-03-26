@@ -1,24 +1,15 @@
-package test;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /** 
 * Transaction Tester.
 */ 
 public class TransactionTest {
-    /**
-     *
-     * Method: Transaction()
-     *
-     */
-    @Test
-    public void testTransaction(String input) throws Exception{
-        //decision coverage
-        //TODO:
-    }
-
-
-
+    Transaction bidTrans = new Transaction("04 item_name           reg_user        admin           00011");
+    Transaction refundTrans = new Transaction("05 existing_user   reg_user        000100.00");
+    Transaction advertiseTrans = new Transaction("03 item_name           reg_user        100 000010");
+    Transaction createTrans = new Transaction("01 new_user        SS 000001.00");
     /**
     *
     * Method: getTransactionCode()
@@ -26,7 +17,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetTransactionCode() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("04", bidTrans.getTransactionCode());
     }
 
     /**
@@ -36,7 +27,7 @@ public class TransactionTest {
     */
     @Test
     public void testGet_uName() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("admin", bidTrans.get_uName());
     }
 
     /**
@@ -46,7 +37,7 @@ public class TransactionTest {
     */
     @Test
     public void testGet_sName() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("reg_user", bidTrans.get_sName());
     }
 
     /**
@@ -56,7 +47,7 @@ public class TransactionTest {
     */
     @Test
     public void testGet_iName() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("item_name", bidTrans.get_iName());
     }
 
     /**
@@ -66,7 +57,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetType() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("04", bidTrans.getType());
     }
 
     /**
@@ -76,7 +67,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetCredits() throws Exception {
-    //TODO: Test goes here...
+        assertEquals(100.00, refundTrans.getCredits(), 0.0);
     }
 
     /**
@@ -86,7 +77,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetBid() throws Exception {
-    //TODO: Test goes here...
+        assertEquals(11, bidTrans.getBid(), 0.0);
     }
 
     /**
@@ -96,7 +87,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetDaysLeft() throws Exception {
-    //TODO: Test goes here...
+        assertEquals(100, advertiseTrans.getDaysLeft());
     }
 
     /**
@@ -106,7 +97,7 @@ public class TransactionTest {
     */
     @Test
     public void testGetRawString() throws Exception {
-    //TODO: Test goes here...
+        assertEquals("new_user        SS 000001.00", createTrans.getRawString());
     }
 
 } 
