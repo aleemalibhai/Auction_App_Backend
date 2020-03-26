@@ -14,6 +14,7 @@ public class Driver {
      * @return : ArrayList<String>
      */
     private static ArrayList<String> readFile(String fileName) {
+        //TODO: add condition for END
         ArrayList<String> lines = new ArrayList<String>();
         try {
             File file = new File(fileName);
@@ -45,6 +46,12 @@ public class Driver {
      */
     protected static ArrayList<User> getUsers(ArrayList<String> userStrings) {
         ArrayList<User> users = new ArrayList<>();
+
+        if(userStrings.isEmpty()){
+            System.out.println("Error: ArrayList of string is empty");
+            return null;
+        }
+
         for (String userString : userStrings) {
             User newUser = new User(userString);
             users.add(newUser);
@@ -72,6 +79,7 @@ public class Driver {
      * @param fileName: name of the file
      */
     public static void writeToFile(ArrayList<String> strings, String fileName){
+        //TODO: deal with end
         File file = new File(fileName);
         //checking if file exists
         if(!file.exists()) {
