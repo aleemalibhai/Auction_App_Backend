@@ -8,16 +8,8 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getAcctType() {
         return acctType;
-    }
-
-    public void setAcctType(String acctType) {
-        this.acctType = acctType;
     }
 
     public double getCredits() {
@@ -29,6 +21,13 @@ public class User {
     }
 
 
+    public User(){}
+
+    public User(String uName, String aType, double creds){
+        this.username = uName;
+        this.acctType = aType;
+        this.credits = creds;
+    }
     /**
      * parse input string to create user object
      * @param input: String

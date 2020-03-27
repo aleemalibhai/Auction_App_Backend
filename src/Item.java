@@ -3,7 +3,7 @@ public class Item {
     private String sellerName;
     private String winningUser;
     private int daysLeft;
-    private float highBid;
+    private double highBid;
 
     public String getItemName() {
         return itemName;
@@ -41,7 +41,7 @@ public class Item {
         return highBid;
     }
 
-    public void setHighBid(float highBid) {
+    public void setHighBid(double highBid) {
         this.highBid = highBid;
     }
 
@@ -54,12 +54,20 @@ public class Item {
     //default constructor
     public Item(){}
 
+    public Item(String iName, String sName, String wName, int days, double highB){
+        this.itemName = iName;
+        this.sellerName = sName;
+        this.winningUser = wName;
+        this.daysLeft = days;
+        this.highBid = highB;
+    }
+
     public Item(String input) {
         this.itemName = input.substring(0, 19).trim();
         this.sellerName = input.substring(20, 36).trim();
-        this.winningUser = input.substring(37, 51).trim();
+        this.winningUser = input.substring(36, 51).trim();
         this.daysLeft = Integer.parseInt(input.substring(52, 55));
-        this.highBid = Float.parseFloat(input.substring(56));
+        this.highBid = Double.parseDouble(input.substring(56));
 
     }
 
@@ -70,8 +78,8 @@ public class Item {
      */
     public String stringify() {
         return (String.format("%-19s", this.itemName) + ' '
-                + String.format("%-14s", this.sellerName) + ' '
-                + String.format("%-14s", this.winningUser) + ' '
+                + String.format("%-15s", this.sellerName) + ' '
+                + String.format("%-15s", this.winningUser) + ' '
                 + String.format("%03d", this.daysLeft) + ' '
                 + String.format("%06.2f", this.highBid));
     }
