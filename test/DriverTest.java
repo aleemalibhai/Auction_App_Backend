@@ -24,6 +24,7 @@ public class DriverTest {
         String userString2 = "valid_user     FS 002300.01";
         String userString3 = "reg_user       SS 001000.30";
         String userString4 = "existing_user  BS 001200.41";
+        /* loop coverage */
 
         //zero times
         ArrayList<String> noUSer = new ArrayList<>();
@@ -72,7 +73,7 @@ public class DriverTest {
         ArrayList<Item> items = new ArrayList<>();
         items.add(testItem);
 
-        assertEquals(items, Driver.getItems(itemStrings)); 
+        assertEquals(items, Driver.getItems(itemStrings));
     }
 
     /**

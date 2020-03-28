@@ -80,6 +80,10 @@ public class Transaction {
                 this.uName = input.substring(39, 53).trim();
                 this.bid = Float.parseFloat(input.substring(54));
                 break;
+            //checking for bad input
+            default:
+                System.out.println("ERROR: bad input, no valid transaction id found");
+                System.exit(-1);
         }
     }
 

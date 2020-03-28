@@ -154,17 +154,27 @@ public class Driver {
 
             switch(transCode){
                 case("01"): //create
+
                     //checking is there is already a user with the given username
                     boolean constraint = false;
                     String newName = trans.get_uName();
                     for(User user: users){
                         if(newName.equals(user.getUsername())){
-                            System.out.println("ERROR: Username constraint,  username already exists");
+                            System.out.println("ERROR: <create> transaction unsuccessful; username already exists");
                             constraint = true;
                             break;
                         }
                     }
+
+                    //checking if credit is less than 1M
+                    double transactionCredit = trans.getCredits();
+                    if (transactionCredit > 999999){
+                        System.out.println("ERROR: <create> transaction unsuccessful; credit exceeds 999,999");
+                        System.exit(-1);
+                    }
+
                     if(constraint){ break; }
+
                     else{
                         //creating a new user object
                         User newUser = new User(trans.getRawString());
@@ -178,46 +188,59 @@ public class Driver {
                 case("02"): //delete
                     String uName = trans.get_uName();
                     boolean found = false;
-                    for(User user: users){
-                        if(uName.equals(user.getUsername())) {
+                    for(User user: users) {
+                        if (uName.equals(user.getUsername())) {
                             found = true;
-
-                            //dealing with items related to the user
-                            for(Item item: items){
-                                //removing the items where user is the seller
-                                if(item.getSellerName().equals(uName)){
-                                    items.remove(item);
-                                    System.out.println("Removed item: "+ item.getItemName()+"with seller " + uName);
-                                }
-                                //resetting the bid to 0 where the user has the highest bid
-                                if(item.getWinningUser().equals(uName)){
-                                    item.setHighBid(0);
-                                    System.out.println("Reset the highest bid for item: "+ item.getItemName() + "to 0");
-                                }
-                            }
-                            //removing the user
-                            users.remove(user);
-                            System.out.println("Removed user: " + uName);
                             break;
                         }
                     }
-                    if(!found){
-                        System.out.println("ERROR: delete operation unsuccessful, username:" + trans.get_uName() + "not found");
+
+                    if(found){
+                        //dealing with items related to the user
+                        for(Item item: items){
+                            //removing the items where user is the seller
+                            if(item.getSellerName().equals(uName)){
+                                items.remove(item);
+                                System.out.println("Removed item: "+ item.getItemName()+"with seller " + uName);
+                            }
+                            //resetting the bid to 0 where the user has the highest bid
+                            if(item.getWinningUser().equals(uName)){
+                                item.setHighBid(0);
+                                System.out.println("Reset the highest bid for item: "+ item.getItemName() + "to 0");
+                            }
+                        }
+                        //removing the user
+                        users.remove(user);
+                        System.out.println("Removed user: " + uName);
+                        break;
+                    }
+
+                    else{
+                        System.out.println("ERROR: <delete> transaction unsuccessful; username:" + trans.get_uName() + "not found");
+                        System.exit(-1);
                     }
                     break;
+
 
                 case("03"): //advertise
                     //creating a new Item
                     Item newItem = new Item();
+
+                    /*checking constraints*/
+                    //checking max price
+                    if(trans.getBid() > 999.99){
+                        System.out.println("ERROR: <advertise> transaction unsuccessful, price for item exceeds $999.99");
+                        System.exit(-1);
+                    }
+
+                    //checking # of days of auction
+                    if(trans.getDaysLeft() > 100){
+                        System.out.println("ERROR: <advertise> transaction unsuccessful; number of days is > 100");
+                        System.exit(-1);
+                    }
+
                     newItem.setItemName(trans.get_iName());
                     newItem.setSellerName(trans.get_sName());
-                    if(trans.getDaysLeft() >= 0){
-                        newItem.setDaysLeft(trans.getDaysLeft());
-                    }
-                    else {
-                        System.out.println("ERROR: number of days left can't be negative");
-                        break;
-                    }
                     newItem.setHighBid(trans.getBid());
 
                     //adding new item to items
@@ -225,31 +248,84 @@ public class Driver {
                     break;
 
                 case("04")://bid
-                    for(Item item: items){
-                        if(item.getItemName().equals(trans.get_iName()) && item.getSellerName().equals(trans.get_sName())){
+                    constraint = true;
+                    //checking if item and seller name exists
+                    for(Item item: items) {
+                        if (item.getItemName().equals(trans.get_iName()) && item.getSellerName().equals(trans.get_sName())) {
+                            constraint = false;
+
+                            //checking is the buyer has enough found to place the bid
+                            for(User user: users) {
+                                if (trans.get_uName().equals(user.getUsername())) {
+                                    if (user.getCredits() < trans.getBid()) {
+                                        System.out.println("ERROR: <bid> transaction unsuccessful; buyer doesn't have enough credits to place the bid");
+                                        System.exit(-1);
+                                    }
+                                }
+                            }
                             //updating the bid
                             item.setHighBid(trans.getBid());
                             System.out.println("New highest bid for item: " + item.getItemName() + "is: " + item.getHighBid());
                             //updating the highest bidder
                             item.setWinningUser(trans.get_uName());
                             System.out.println("Winning user for item: " + item.getItemName() + "is: " + item.getWinningUser());
-
                             break;
                         }
+
+                    }
+                    if(constraint){
+                        System.out.println("ERROR: <bid> transaction unsuccessful; incorrect item/seller name");
+                        System.exit(-1);
                     }
                     break;
 
                 case("05")://refund
+
+                    boolean sellerExists = false;
+                    boolean buyerExists = false;
+
                     for(User user: users){
-                        //deducting credits from sellers's account
-                        if(user.getUsername().equals(trans.get_sName())){
-                            user.setCredits(user.getCredits() - trans.getCredits());
-                            System.out.println("Deducted " + trans.getCredits() + "credits from account of seller: " + user.getUsername());
+                        if(trans.get_uName().equals(user.getUsername())){
+                            buyerExists = true;
                         }
+                        if(trans.get_sName().equals(user.getUsername()) ){
+                            sellerExists = true;
+                        }
+                    }
+
+                    if(sellerExists == false || buyerExists == false){
+                        System.out.println("ERROR: <refund> transaction unsuccessful; seller/buyer doesn't exist");
+                        System.exit(-1);
+                    }
+
+                    for(User user: users) {
+                        //deducting credits from sellers's account
+                        if (user.getUsername().equals(trans.get_sName())) {
+                            //checking if seller has enough balance for refund
+                            if (user.getCredits() < trans.getCredits()) {
+                                System.out.println("ERROR: <refund> transaction unsuccessful; seller doesn't have enough credit");
+                                System.exit(-1);
+                                //break; ?
+                            } else {
+                                user.setCredits(user.getCredits() - trans.getCredits());
+                                System.out.println("Deducted " + trans.getCredits() + "credits from account of seller: " + user.getUsername());
+                            }
+                        }
+                    }
+                    for(User user: users){
                         //adding credits to user's account
                         if(user.getUsername().equals(trans.get_uName())){
-                            user.setCredits(user.getCredits() + trans.getCredits());
-                            System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
+                            //checking if credit for user exceeds 1M
+                            if( (user.getCredits() + trans.getCredits()) > 999999){
+                                System.out.println("ERROR: <refund> unsuccessful; refund will result in exceeding max credit limit") ;
+                                System.exit(-1);
+                                //break; ?
+                            }
+                            else {
+                                user.setCredits(user.getCredits() + trans.getCredits());
+                                System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
+                                break;
+                            }
                         }
                     }
                     break;
@@ -257,8 +333,26 @@ public class Driver {
                 case("06")://addcredit
                     for(User user: users){
                         if(user.getUsername().equals(trans.get_uName())){
-                            user.setCredits(user.getCredits() + trans.getCredits());
-                            System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
+
+                            //checking if transfer exceeds 1k
+                            if(trans.getCredits() > 1000){
+                                System.out.println("ERROR: <addcredi> unsuccessful; transaction limit is 1000");
+                                System.exit(-1);
+                                //break; ??
+                            }
+
+                            //checking if addition of credits results in exceeding credit limit for user
+                            if( (user.getCredits() + trans.getCredits()) > 999999){
+                                System.out.println("ERROR: <addcredi> unsuccessful; credit limit is 1000");
+                                System.exit(-1);
+                                //break; ??
+                            }
+
+                            else{
+                                user.setCredits(user.getCredits() + trans.getCredits());
+                                System.out.println("Added " + trans.getCredits() + "credits to account of buyer: " + user.getUsername());
+                                break;
+                            }
                         }
                     }
                     break;
