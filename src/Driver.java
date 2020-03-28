@@ -187,10 +187,12 @@ public class Driver {
 
                 case("02"): //delete
                     String uName = trans.get_uName();
+                    User deleteUser = new User();
                     boolean found = false;
                     for(User user: users) {
                         if (uName.equals(user.getUsername())) {
                             found = true;
+                            deleteUser = user;
                             break;
                         }
                     }
@@ -210,7 +212,7 @@ public class Driver {
                             }
                         }
                         //removing the user
-                        users.remove(user);
+                        users.remove(deleteUser);
                         System.out.println("Removed user: " + uName);
                         break;
                     }
