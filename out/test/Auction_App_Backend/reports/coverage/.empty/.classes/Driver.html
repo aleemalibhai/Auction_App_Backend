@@ -1,0 +1,440 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Driver</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Driver (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Driver</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.9%
+  </span>
+  <span class="absValue">
+    (13/ 14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.9%
+  </span>
+  <span class="absValue">
+    (160/ 182)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.io.BufferedReader;
+<i>2</i>&nbsp;import java.io.FileReader;
+<i>3</i>&nbsp;import java.io.IOException;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;import java.io.BufferedWriter;
+<i>6</i>&nbsp;import java.io.File;
+<i>7</i>&nbsp;import java.io.FileWriter;
+<i>8</i>&nbsp;
+<b class="nc"><i>9</i>&nbsp;public class Driver {</b>
+<b class="nc"><i>10</i>&nbsp;    private ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>11</i>&nbsp;    private ArrayList&lt;User&gt; items = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>12</i>&nbsp;    private ArrayList&lt;User&gt; transactions = new ArrayList&lt;&gt;();</b>
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * Reads the given file line by line and returns an ArrayList of Strings
+<i>16</i>&nbsp;     * @param fileName : (String) Name of the file
+<i>17</i>&nbsp;     * @return : ArrayList&lt;String&gt;
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    public static ArrayList&lt;String&gt; readFile(String fileName) {
+<i>20</i>&nbsp;        //TODO: add condition for END
+<b class="fc"><i>21</i>&nbsp;        ArrayList&lt;String&gt; lines = new ArrayList&lt;String&gt;();</b>
+<i>22</i>&nbsp;        try {
+<b class="fc"><i>23</i>&nbsp;            File file = new File(fileName);</b>
+<b class="fc"><i>24</i>&nbsp;            if(file.exists()){</b>
+<b class="fc"><i>25</i>&nbsp;                BufferedReader r = new BufferedReader(new FileReader(file));</b>
+<i>26</i>&nbsp;                String line;
+<b class="fc"><i>27</i>&nbsp;                while ((line = r.readLine()) != null) {</b>
+<b class="fc"><i>28</i>&nbsp;                    lines.add(line);</b>
+<i>29</i>&nbsp;                }
+<b class="fc"><i>30</i>&nbsp;                r.close();</b>
+<i>31</i>&nbsp;
+<b class="fc"><i>32</i>&nbsp;            }</b>
+<i>33</i>&nbsp;            else{
+<b class="fc"><i>34</i>&nbsp;                System.out.println(&quot;ERROR: &quot; + fileName + &quot; doesn&#39;t exist&quot;);</b>
+<b class="fc"><i>35</i>&nbsp;                System.exit(-1);</b>
+<i>36</i>&nbsp;            }
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;        }
+<b class="fc"><i>39</i>&nbsp;        catch (IOException e) {</b>
+<i>40</i>&nbsp;            // locked file
+<b class="fc"><i>41</i>&nbsp;            System.out.println(&quot;ERROR: could not open file &quot; + fileName);</b>
+<b class="fc"><i>42</i>&nbsp;            System.exit(-2);</b>
+<b class="fc"><i>43</i>&nbsp;        }</b>
+<b class="fc"><i>44</i>&nbsp;        return lines;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * Generate ArrayList of Users from ArrayList of String
+<i>49</i>&nbsp;     * @param userStrings: an Arraylist&lt;String&gt; for user accounts
+<i>50</i>&nbsp;     * @return : an ArrayList&lt;User&gt;
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    protected static ArrayList&lt;User&gt; getUsers(ArrayList&lt;String&gt; userStrings) {
+<b class="fc"><i>53</i>&nbsp;        ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();</b>
+<i>54</i>&nbsp;
+<b class="fc"><i>55</i>&nbsp;        if(userStrings.isEmpty()){</b>
+<b class="fc"><i>56</i>&nbsp;            System.out.println(&quot;Error: ArrayList of string is empty&quot;);</b>
+<b class="fc"><i>57</i>&nbsp;            System.exit(-1);</b>
+<i>58</i>&nbsp;        }
+<i>59</i>&nbsp;
+<b class="fc"><i>60</i>&nbsp;        for (String userString : userStrings) {</b>
+<b class="fc"><i>61</i>&nbsp;            User newUser = new User(userString);</b>
+<b class="fc"><i>62</i>&nbsp;            users.add(newUser);</b>
+<b class="fc"><i>63</i>&nbsp;        }</b>
+<b class="fc"><i>64</i>&nbsp;        return users;</b>
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * generate ArrayList of items from ArrayList of String
+<i>69</i>&nbsp;     * @param itemStrings: ArrayList&lt;String&gt;
+<i>70</i>&nbsp;     * @return : ArrayList&lt;Item&gt;
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public static ArrayList&lt;Item&gt; getItems(ArrayList&lt;String&gt; itemStrings) {
+<b class="fc"><i>73</i>&nbsp;        ArrayList&lt;Item&gt; items = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>74</i>&nbsp;        for (String itemString : itemStrings) {</b>
+<b class="fc"><i>75</i>&nbsp;            Item newItem = new Item(itemString);</b>
+<b class="fc"><i>76</i>&nbsp;            items.add(newItem);</b>
+<b class="fc"><i>77</i>&nbsp;        }</b>
+<b class="fc"><i>78</i>&nbsp;        return items;</b>
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    /**
+<i>82</i>&nbsp;     * Writes the strings for ArrayList to the given file
+<i>83</i>&nbsp;     * @param strings: ArrayList of type: String
+<i>84</i>&nbsp;     * @param fileName: name of the file
+<i>85</i>&nbsp;     */
+<i>86</i>&nbsp;    public static boolean writeToFile(ArrayList&lt;String&gt; strings, String fileName){
+<i>87</i>&nbsp;        //TODO: deal with end
+<b class="fc"><i>88</i>&nbsp;        File file = new File(fileName);</b>
+<i>89</i>&nbsp;        //checking if file exists
+<b class="fc"><i>90</i>&nbsp;        if(!file.exists()) {</b>
+<b class="fc"><i>91</i>&nbsp;            System.out.println(&quot;ERROR: given filename doesn&#39;t exist&quot;);</b>
+<b class="fc"><i>92</i>&nbsp;            return false;</b>
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;        try{
+<b class="fc"><i>96</i>&nbsp;           BufferedWriter bw = new BufferedWriter(new FileWriter(file));</b>
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;            //writing each String to the file
+<i>99</i>&nbsp;            // over writes the file
+<b class="fc"><i>100</i>&nbsp;            for(String string: strings){</b>
+<b class="fc"><i>101</i>&nbsp;                bw.write(string + System.lineSeparator());</b>
+<b class="fc"><i>102</i>&nbsp;            }</b>
+<i>103</i>&nbsp;
+<b class="fc"><i>104</i>&nbsp;            bw.close();</b>
+<b class="fc"><i>105</i>&nbsp;            return true;</b>
+<i>106</i>&nbsp;        }
+<b class="fc"><i>107</i>&nbsp;        catch (IOException e){</b>
+<b class="fc"><i>108</i>&nbsp;            System.out.println(&quot;ERROR: error in writing the file&quot;);</b>
+<b class="fc"><i>109</i>&nbsp;            return false;</b>
+<i>110</i>&nbsp;        }
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    public static void createUser(ArrayList&lt;User&gt; users, String transaction) {
+<b class="fc"><i>114</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<i>115</i>&nbsp;        //checking is there is already a user with the given username
+<b class="fc"><i>116</i>&nbsp;        String newName = trans.get_uName();</b>
+<b class="fc"><i>117</i>&nbsp;        for(User user: users){</b>
+<b class="fc"><i>118</i>&nbsp;            if(newName.equals(user.getUsername())){</b>
+<b class="fc"><i>119</i>&nbsp;                System.out.println(&quot;ERROR: &lt;create&gt; username already exists, Transaction: &quot; + transaction);</b>
+<b class="fc"><i>120</i>&nbsp;                return;</b>
+<i>121</i>&nbsp;            }
+<b class="nc"><i>122</i>&nbsp;        }</b>
+<i>123</i>&nbsp;        //creating a new user object
+<b class="fc"><i>124</i>&nbsp;        User newUser = new User(trans.get_uName(),</b>
+<b class="fc"><i>125</i>&nbsp;                trans.getUserType(),</b>
+<b class="fc"><i>126</i>&nbsp;                trans.getCredits());</b>
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;        //adding the new object to users
+<b class="fc"><i>129</i>&nbsp;        users.add(newUser);</b>
+<b class="fc"><i>130</i>&nbsp;    }</b>
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;    public static boolean deleteUser(ArrayList&lt;User&gt; users, ArrayList&lt;Item&gt; items, String transaction) {
+<b class="fc"><i>133</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<b class="fc"><i>134</i>&nbsp;        String uName = trans.get_uName();</b>
+<b class="fc"><i>135</i>&nbsp;        for(User user: users) {</b>
+<b class="fc"><i>136</i>&nbsp;            if (uName.equals(user.getUsername())) {</b>
+<i>137</i>&nbsp;                                //removing the user
+<b class="fc"><i>138</i>&nbsp;                users.remove(user);</b>
+<b class="fc"><i>139</i>&nbsp;                return true;</b>
+<i>140</i>&nbsp;            }
+<b class="fc"><i>141</i>&nbsp;        }</b>
+<i>142</i>&nbsp;        //dealing with items related to the user
+<b class="fc"><i>143</i>&nbsp;        for(Item item: items){</b>
+<i>144</i>&nbsp;            //removing the items where user is the seller
+<b class="fc"><i>145</i>&nbsp;            if(item.getSellerName().equals(uName)){</b>
+<b class="nc"><i>146</i>&nbsp;                items.remove(item);</b>
+<i>147</i>&nbsp;                // System.out.println(&quot;Removed item: &quot;+ item.getItemName()+&quot;with seller &quot; + uName);
+<i>148</i>&nbsp;            }
+<i>149</i>&nbsp;            //resetting the bid to 0 where the user has the highest bid
+<b class="fc"><i>150</i>&nbsp;            if(item.getWinningUser().equals(uName)){</b>
+<b class="nc"><i>151</i>&nbsp;                item.setHighBid(0.0);</b>
+<i>152</i>&nbsp;                // System.out.println(&quot;Reset the highest bid for item: &quot;+ item.getItemName() + &quot;to 0&quot;);
+<i>153</i>&nbsp;            }
+<b class="fc"><i>154</i>&nbsp;        }</b>
+<i>155</i>&nbsp;        // System.out.println(&quot;Removed user: &quot; + uName);
+<i>156</i>&nbsp;
+<b class="fc"><i>157</i>&nbsp;        System.out.println(&quot;ERROR: &lt;delete&gt; transaction unsuccessful; username:&quot; + trans.get_uName() + &quot;not found&quot;);</b>
+<b class="fc"><i>158</i>&nbsp;        return false;</b>
+<i>159</i>&nbsp;    }
+<i>160</i>&nbsp;
+<i>161</i>&nbsp;    public static boolean advertise(ArrayList&lt;Item&gt; items, String transaction) {
+<b class="fc"><i>162</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<i>163</i>&nbsp;        /*checking constraints*/
+<i>164</i>&nbsp;        //checking max price
+<i>165</i>&nbsp;
+<i>166</i>&nbsp;        //checking # of days of auction
+<b class="fc"><i>167</i>&nbsp;        if(trans.getDaysLeft() &lt;= 0){</b>
+<b class="fc"><i>168</i>&nbsp;            System.out.println(&quot;ERROR: &lt;advertise&gt; transaction unsuccessful; number of days is &lt;= 0&quot;);</b>
+<b class="fc"><i>169</i>&nbsp;            return false;</b>
+<i>170</i>&nbsp;        }
+<i>171</i>&nbsp;        //creating a new Item
+<b class="fc"><i>172</i>&nbsp;        Item newItem = new Item(trans.get_iName(),</b>
+<b class="fc"><i>173</i>&nbsp;                trans.get_sName(),</b>
+<i>174</i>&nbsp;                &quot; &quot;,
+<b class="fc"><i>175</i>&nbsp;                trans.getDaysLeft(),</b>
+<b class="fc"><i>176</i>&nbsp;                trans.getBid());</b>
+<i>177</i>&nbsp;
+<i>178</i>&nbsp;        //adding new item to items
+<b class="fc"><i>179</i>&nbsp;        items.add(newItem);</b>
+<b class="fc"><i>180</i>&nbsp;        return true;</b>
+<i>181</i>&nbsp;    }
+<i>182</i>&nbsp;
+<i>183</i>&nbsp;    public static boolean refund(ArrayList&lt;User&gt; users, String transaction) {
+<b class="fc"><i>184</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<i>185</i>&nbsp;
+<i>186</i>&nbsp;
+<b class="fc"><i>187</i>&nbsp;        for(User user: users) {</b>
+<b class="fc"><i>188</i>&nbsp;            if (user.getUsername().equals(trans.get_uName())){</b>
+<b class="fc"><i>189</i>&nbsp;                for (User user2 : users) {</b>
+<b class="fc"><i>190</i>&nbsp;                    if (user2.getUsername().equals(trans.get_sName())){</b>
+<b class="fc"><i>191</i>&nbsp;                        user.setCredits( user.getCredits() + trans.getCredits() );</b>
+<b class="fc"><i>192</i>&nbsp;                        user2.setCredits( user.getCredits() - trans.getCredits() );</b>
+<b class="fc"><i>193</i>&nbsp;                        return true;</b>
+<i>194</i>&nbsp;                    }
+<b class="fc"><i>195</i>&nbsp;                }</b>
+<i>196</i>&nbsp;                // user to get money
+<i>197</i>&nbsp;
+<i>198</i>&nbsp;            }
+<b class="fc"><i>199</i>&nbsp;        }</b>
+<b class="fc"><i>200</i>&nbsp;        System.out.println(&quot;Error: &lt;refund&gt; buyer or seller does not exist, Transaction: &quot; + transaction);</b>
+<b class="fc"><i>201</i>&nbsp;        return false;</b>
+<i>202</i>&nbsp;    }
+<i>203</i>&nbsp;
+<i>204</i>&nbsp;    public static boolean bid(ArrayList&lt;Item&gt; items, String transaction) {
+<b class="fc"><i>205</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<i>206</i>&nbsp;        //checking if item and seller name exists
+<b class="fc"><i>207</i>&nbsp;        for(Item item: items) {</b>
+<b class="fc"><i>208</i>&nbsp;            if (item.getItemName().equals(trans.get_iName()) &amp;&amp; item.getSellerName().equals(trans.get_sName())) {</b>
+<i>209</i>&nbsp;                //updating the bid
+<b class="fc"><i>210</i>&nbsp;                item.setHighBid(trans.getBid());</b>
+<i>211</i>&nbsp;                //updating the highest bidder
+<b class="fc"><i>212</i>&nbsp;                item.setWinningUser(trans.get_uName());</b>
+<i>213</i>&nbsp;
+<i>214</i>&nbsp;                // System.out.println(&quot;New highest bid for item: &quot; + item.getItemName() + &quot;is: &quot; + item.getHighBid());
+<i>215</i>&nbsp;                // System.out.println(&quot;Winning user for item: &quot; + item.getItemName() + &quot;is: &quot; + item.getWinningUser());
+<b class="fc"><i>216</i>&nbsp;                return true;</b>
+<i>217</i>&nbsp;            }
+<b class="fc"><i>218</i>&nbsp;        }</b>
+<b class="fc"><i>219</i>&nbsp;        System.out.println(&quot;ERROR: &lt;bid&gt; transaction unsuccessful; incorrect item/seller name&quot;);</b>
+<b class="fc"><i>220</i>&nbsp;        return false;</b>
+<i>221</i>&nbsp;    }
+<i>222</i>&nbsp;
+<i>223</i>&nbsp;    public static boolean addCredits(ArrayList&lt;User&gt; users, String transaction) {
+<b class="fc"><i>224</i>&nbsp;        Transaction trans = new Transaction(transaction);</b>
+<b class="fc"><i>225</i>&nbsp;        for (User user : users) {</b>
+<b class="fc"><i>226</i>&nbsp;            if (user.getUsername().equals(trans.get_uName())) {</b>
+<b class="fc"><i>227</i>&nbsp;                user.setCredits( user.getCredits() + trans.getCredits() );</b>
+<b class="fc"><i>228</i>&nbsp;                return true;</b>
+<i>229</i>&nbsp;            }
+<b class="fc"><i>230</i>&nbsp;        }</b>
+<i>231</i>&nbsp;        // fails silently
+<b class="fc"><i>232</i>&nbsp;        return false;</b>
+<i>233</i>&nbsp;    }
+<i>234</i>&nbsp;
+<i>235</i>&nbsp;    public static void closeDay(ArrayList&lt;User&gt; users, ArrayList&lt;Item&gt; items) {
+<b class="fc"><i>236</i>&nbsp;        ArrayList&lt;Item&gt; ended = new ArrayList&lt;&gt;();</b>
+<i>237</i>&nbsp;        // decrement days left on all items
+<b class="fc"><i>238</i>&nbsp;        for (Item item : items){</b>
+<b class="fc"><i>239</i>&nbsp;            item.setDaysLeft( item.getDaysLeft() - 1 );</b>
+<b class="fc"><i>240</i>&nbsp;            if (item.getDaysLeft() == 0) {</b>
+<i>241</i>&nbsp;                // item has ended
+<b class="fc"><i>242</i>&nbsp;                ended.add(item);</b>
+<b class="fc"><i>243</i>&nbsp;            } else if (item.getDaysLeft() &lt; 0) {</b>
+<i>244</i>&nbsp;                // should never happen
+<b class="fc"><i>245</i>&nbsp;                System.out.println(&quot;Error &lt;end&gt; item: &quot; + item.getItemName() + &quot; has negative days left closing now&quot;);</b>
+<b class="fc"><i>246</i>&nbsp;                ended.add(item);</b>
+<i>247</i>&nbsp;            }
+<b class="fc"><i>248</i>&nbsp;        }</b>
+<i>249</i>&nbsp;        // close ended items
+<b class="fc"><i>250</i>&nbsp;        for (Item item : ended) {</b>
+<b class="fc"><i>251</i>&nbsp;            User winner = null;</b>
+<b class="fc"><i>252</i>&nbsp;            User seller = null;</b>
+<b class="fc"><i>253</i>&nbsp;            for (User user : users) {</b>
+<b class="fc"><i>254</i>&nbsp;                if (user.getUsername().equals(item.getWinningUser())){</b>
+<b class="fc"><i>255</i>&nbsp;                    winner = user;</b>
+<b class="fc"><i>256</i>&nbsp;                } else if (user.getUsername().equals(item.getSellerName())){</b>
+<b class="fc"><i>257</i>&nbsp;                    seller = user;</b>
+<i>258</i>&nbsp;                }
+<b class="fc"><i>259</i>&nbsp;            }</b>
+<i>260</i>&nbsp;            // add money to seller
+<b class="fc"><i>261</i>&nbsp;            seller.setCredits( seller.getCredits() + item.getHighBid() );</b>
+<i>262</i>&nbsp;            // take money from winner
+<b class="fc"><i>263</i>&nbsp;            winner.setCredits( winner.getCredits() - item.getHighBid() );</b>
+<i>264</i>&nbsp;            // remove item from items list
+<b class="fc"><i>265</i>&nbsp;            items.remove(item);</b>
+<b class="fc"><i>266</i>&nbsp;        }</b>
+<b class="fc"><i>267</i>&nbsp;    }</b>
+<i>268</i>&nbsp;
+<i>269</i>&nbsp;    public static boolean endSession(ArrayList&lt;User&gt; users, String usersFile, ArrayList&lt;Item&gt; items, String itemsFile) {
+<i>270</i>&nbsp;        //convert all Item objects to strings
+<b class="fc"><i>271</i>&nbsp;        ArrayList&lt;String&gt; out_itemStrings = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>272</i>&nbsp;        for(Item item: items){</b>
+<b class="fc"><i>273</i>&nbsp;            out_itemStrings.add(item.stringify());</b>
+<b class="fc"><i>274</i>&nbsp;        }</b>
+<i>275</i>&nbsp;        //convert all User objects to strings
+<b class="fc"><i>276</i>&nbsp;        ArrayList&lt;String&gt; out_userStrings = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>277</i>&nbsp;        for(User user: users){</b>
+<b class="fc"><i>278</i>&nbsp;            out_userStrings.add(user.stringify());</b>
+<b class="fc"><i>279</i>&nbsp;        }</b>
+<b class="fc"><i>280</i>&nbsp;        if(!writeToFile(out_itemStrings, itemsFile) || !writeToFile(out_userStrings, usersFile)) {</b>
+<b class="fc"><i>281</i>&nbsp;            return false;</b>
+<i>282</i>&nbsp;        }
+<b class="fc"><i>283</i>&nbsp;        return true;</b>
+<i>284</i>&nbsp;    }
+<i>285</i>&nbsp;
+<i>286</i>&nbsp;    public static void main(String[] args){
+<b class="fc"><i>287</i>&nbsp;        String usersFile = &quot;resources/users.txt&quot;;</b>
+<b class="fc"><i>288</i>&nbsp;        String itemsFile = &quot;resources/items.txt&quot;;</b>
+<b class="fc"><i>289</i>&nbsp;        String tFile = &quot;resources/daily_transactions.txt&quot;;</b>
+<b class="fc"><i>290</i>&nbsp;        if (args.length == 4) {</b>
+<b class="fc"><i>291</i>&nbsp;            usersFile = args[1];</b>
+<b class="fc"><i>292</i>&nbsp;            itemsFile = args[2];</b>
+<b class="fc"><i>293</i>&nbsp;            tFile = args[3];</b>
+<i>294</i>&nbsp;        }
+<i>295</i>&nbsp;
+<i>296</i>&nbsp;        //reading the user accounts file
+<b class="fc"><i>297</i>&nbsp;        ArrayList&lt;String&gt; userStrings = new ArrayList&lt;&gt;(readFile(usersFile));;</b>
+<b class="fc"><i>298</i>&nbsp;        if (userStrings.size() == 0) {</b>
+<b class="fc"><i>299</i>&nbsp;            System.out.println(&quot;ERROR: function readFile() returned null2&quot;);</b>
+<b class="fc"><i>300</i>&nbsp;            return;</b>
+<i>301</i>&nbsp;        }
+<i>302</i>&nbsp;
+<i>303</i>&nbsp;        //reading the available items file
+<b class="fc"><i>304</i>&nbsp;        ArrayList&lt;String&gt; itemStrings = new ArrayList&lt;&gt;(readFile(itemsFile));</b>
+<b class="fc"><i>305</i>&nbsp;        if(itemStrings.size() == 0) {</b>
+<b class="fc"><i>306</i>&nbsp;            System.out.println(&quot;ERROR: function readFile() returned null1&quot;);</b>
+<b class="fc"><i>307</i>&nbsp;            return;</b>
+<i>308</i>&nbsp;        }
+<i>309</i>&nbsp;
+<i>310</i>&nbsp;        //generating ArrayList of Users and Items
+<b class="fc"><i>311</i>&nbsp;        ArrayList&lt;User&gt; users = getUsers(userStrings);</b>
+<b class="fc"><i>312</i>&nbsp;        ArrayList&lt;Item&gt; items = getItems(itemStrings);</b>
+<i>313</i>&nbsp;
+<i>314</i>&nbsp;        //read in merged transaction file
+<b class="fc"><i>315</i>&nbsp;        ArrayList&lt;String&gt; transactions = readFile(tFile);</b>
+<b class="fc"><i>316</i>&nbsp;        if(transactions.size() == 0){</b>
+<b class="fc"><i>317</i>&nbsp;            System.out.println(&quot;ERROR: function readfile() returned null&quot;);</b>
+<b class="fc"><i>318</i>&nbsp;            return;</b>
+<i>319</i>&nbsp;        }
+<i>320</i>&nbsp;
+<i>321</i>&nbsp;        //reading and executing each transaction
+<b class="nc"><i>322</i>&nbsp;        for(String transaction: transactions){</b>
+<i>323</i>&nbsp;            //generating a Transaction object from the String
+<b class="nc"><i>324</i>&nbsp;            Transaction trans = new Transaction(transaction);</b>
+<i>325</i>&nbsp;            //getting the Transaction code
+<b class="nc"><i>326</i>&nbsp;            switch(transaction.substring(0, 2)){</b>
+<i>327</i>&nbsp;                case(&quot;01&quot;): // create
+<b class="nc"><i>328</i>&nbsp;                    createUser(users, transaction);</b>
+<b class="nc"><i>329</i>&nbsp;                    break;</b>
+<i>330</i>&nbsp;                case(&quot;02&quot;): // delete
+<b class="nc"><i>331</i>&nbsp;                    if (deleteUser(users, items, transaction)) { System.exit(-1); }</b>
+<i>332</i>&nbsp;                    break;
+<i>333</i>&nbsp;                case(&quot;03&quot;): // advertise
+<b class="nc"><i>334</i>&nbsp;                    if (!advertise(items, transaction)) { System.exit(-1); }</b>
+<i>335</i>&nbsp;                    break;
+<i>336</i>&nbsp;                case(&quot;04&quot;): // bid
+<b class="nc"><i>337</i>&nbsp;                    if (!bid(items, transaction)) { System.exit(-1); }</b>
+<i>338</i>&nbsp;                    break;
+<i>339</i>&nbsp;                case(&quot;05&quot;): // refund
+<b class="nc"><i>340</i>&nbsp;                    if(!refund(users, transaction)) { System.exit(-1); }</b>
+<i>341</i>&nbsp;                    break;
+<i>342</i>&nbsp;                case(&quot;06&quot;): // addcredit
+<b class="nc"><i>343</i>&nbsp;                    addCredits(users, transaction);</b>
+<b class="nc"><i>344</i>&nbsp;                    break;</b>
+<i>345</i>&nbsp;                case(&quot;00&quot;)://end of session
+<b class="nc"><i>346</i>&nbsp;                    closeDay(users, items);</b>
+<b class="nc"><i>347</i>&nbsp;                    if(!endSession(users, usersFile, items, itemsFile)) { System.exit(-1);}</b>
+<i>348</i>&nbsp;                    break;
+<i>349</i>&nbsp;            }
+<b class="nc"><i>350</i>&nbsp;        }</b>
+<i>351</i>&nbsp;
+<b class="nc"><i>352</i>&nbsp;    }</b>
+<i>353</i>&nbsp;
+<i>354</i>&nbsp;}
+<i>355</i>&nbsp;
+<i>356</i>&nbsp;
+<i>357</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-03-29 02:19</div>
+</div>
+</body>
+</html>

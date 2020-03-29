@@ -17,18 +17,20 @@ public class Driver {
      * @return : ArrayList<String>
      */
     public static ArrayList<String> readFile(String fileName) {
-        //TODO: add condition for END
+
         ArrayList<String> lines = new ArrayList<String>();
         try {
             File file = new File(fileName);
+
             if(file.exists()){
+
                 BufferedReader r = new BufferedReader(new FileReader(file));
                 String line;
                 while ((line = r.readLine()) != null) {
+                    if(line.equals("END")){break;}
                     lines.add(line);
                 }
                 r.close();
-
             }
             else{
                 System.out.println("ERROR: " + fileName + " doesn't exist");
@@ -39,7 +41,7 @@ public class Driver {
         catch (IOException e) {
             // locked file
             System.out.println("ERROR: could not open file " + fileName);
-            System.exit(-2);
+            System.exit(-1);
         }
         return lines;
     }
@@ -84,7 +86,6 @@ public class Driver {
      * @param fileName: name of the file
      */
     public static boolean writeToFile(ArrayList<String> strings, String fileName){
-        //TODO: deal with end
         File file = new File(fileName);
         //checking if file exists
         if(!file.exists()) {
@@ -159,7 +160,7 @@ public class Driver {
         items.removeAll(toRemove);
         // System.out.println("Removed user: " + uName);
         if (!check) {
-            System.out.println("ERROR: <delete> transaction unsuccessful; username:" + trans.get_uName() + "not found");
+            System.out.println("ERROR: <delete> transaction unsuccessful; username: " + trans.get_uName() + " not found");
             return false;
         }
         return true;

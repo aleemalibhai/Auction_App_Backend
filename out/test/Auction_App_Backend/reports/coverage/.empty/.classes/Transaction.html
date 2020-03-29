@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Transaction</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Transaction (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Transaction</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (42/ 42)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;public class Transaction {
+<b class="fc"><i>2</i>&nbsp;    private String transactionCode = null;</b>
+<b class="fc"><i>3</i>&nbsp;    private String uName = null;                            // appears as UUUUUU... in the docs</b>
+<b class="fc"><i>4</i>&nbsp;    private String sName = null;                            // appears as SSSSSS... in the docs</b>
+<b class="fc"><i>5</i>&nbsp;    private String iName = null;                            // appears as IIIIII... in the docs</b>
+<b class="fc"><i>6</i>&nbsp;    private String userType = null;                         // appears as TT in the docs</b>
+<b class="fc"><i>7</i>&nbsp;    private String rawString = null;                        // appears as string after XX_ in the docs</b>
+<i>8</i>&nbsp;    private double credits;                                 // appears as CCCCCC... in the docs
+<i>9</i>&nbsp;    private double bid;                                     // appears as PPPPPP... in the docs
+<i>10</i>&nbsp;    private int daysLeft;                                   // appears as DDD in the docs
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    public String getTransactionCode() {
+<b class="fc"><i>13</i>&nbsp;        return transactionCode;</b>
+<i>14</i>&nbsp;    }       // returns transaction code
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    public String get_uName() {
+<b class="fc"><i>17</i>&nbsp;        return uName;</b>
+<i>18</i>&nbsp;    }                          // returns uName
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public String get_sName() {
+<b class="fc"><i>21</i>&nbsp;        return sName;</b>
+<i>22</i>&nbsp;    }                          // returns sName
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    public String get_iName() {
+<b class="fc"><i>25</i>&nbsp;        return iName;</b>
+<i>26</i>&nbsp;    }                          // returns iName
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    public String getUserType() {
+<b class="fc"><i>29</i>&nbsp;        return userType;</b>
+<i>30</i>&nbsp;    }                     // returns Type
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public double getCredits() {
+<b class="fc"><i>33</i>&nbsp;        return credits;</b>
+<i>34</i>&nbsp;    }                       // returns Credits (to add or available)
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public double getBid() {
+<b class="fc"><i>37</i>&nbsp;        return bid;</b>
+<i>38</i>&nbsp;    }                                // returns Bid (highest or new)
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    public int getDaysLeft() {
+<b class="fc"><i>41</i>&nbsp;        return daysLeft;</b>
+<i>42</i>&nbsp;    }                        // returns Days left in auction
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;    public Transaction(String input){</b>
+<i>45</i>&nbsp;        // parses line from transaction file into new objects
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;        // parse transaction code first
+<b class="fc"><i>48</i>&nbsp;        this.transactionCode = input.substring(0, 2);</b>
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;        switch (this.transactionCode){</b>
+<i>51</i>&nbsp;            case (&quot;00&quot;): // end of session
+<b class="fc"><i>52</i>&nbsp;                this.uName = &quot;               &quot;;</b>
+<b class="fc"><i>53</i>&nbsp;                this.userType = &quot;  &quot;;</b>
+<b class="fc"><i>54</i>&nbsp;                this.credits = 0.00;</b>
+<b class="fc"><i>55</i>&nbsp;                break;</b>
+<i>56</i>&nbsp;            // all with form XX_UUUUUUUUUUUUUUU_TT_CCCCCCCCC
+<i>57</i>&nbsp;            case (&quot;01&quot;): //create
+<i>58</i>&nbsp;            case (&quot;02&quot;): //delete
+<i>59</i>&nbsp;            case (&quot;06&quot;): //addcredit
+<b class="fc"><i>60</i>&nbsp;                this.uName = input.substring(3, 18).trim();</b>
+<b class="fc"><i>61</i>&nbsp;                this.userType = input.substring(19, 21);</b>
+<b class="fc"><i>62</i>&nbsp;                this.credits = Float.parseFloat(input.substring(22));</b>
+<b class="fc"><i>63</i>&nbsp;                break;</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;            // of form XX_IIIIIIIIIIIIIIIIIII_SSSSSSSSSSSSSS_DDD_PPPPPP
+<i>66</i>&nbsp;            case (&quot;03&quot;): //advertise
+<b class="fc"><i>67</i>&nbsp;                this.iName = input.substring(3, 22).trim();</b>
+<b class="fc"><i>68</i>&nbsp;                this.sName = input.substring(23, 36).trim();</b>
+<b class="fc"><i>69</i>&nbsp;                this.daysLeft = Integer.parseInt(input.substring(37, 40));</b>
+<b class="fc"><i>70</i>&nbsp;                this.bid = Double.parseDouble(input.substring(41));</b>
+<b class="fc"><i>71</i>&nbsp;                break;</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;            // of form XX_IIIIIIIIIIIIIIIIIII_SSSSSSSSSSSSSSS_UUUUUUUUUUUUUUU_PPPPPP
+<i>74</i>&nbsp;            case (&quot;04&quot;): //bid
+<b class="fc"><i>75</i>&nbsp;                this.iName = input.substring(3, 22).trim();</b>
+<b class="fc"><i>76</i>&nbsp;                this.sName = input.substring(22, 39).trim();</b>
+<b class="fc"><i>77</i>&nbsp;                this.uName = input.substring(39, 54).trim();</b>
+<b class="fc"><i>78</i>&nbsp;                this.bid = Double.parseDouble(input.substring(54));</b>
+<b class="fc"><i>79</i>&nbsp;                break;</b>
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;            // of form XX_UUUUUUUUUUUUUUU_SSSSSSSSSSSSSSS_CCCCCCCCC
+<i>82</i>&nbsp;            case (&quot;05&quot;): //refund
+<b class="fc"><i>83</i>&nbsp;                this.uName = input.substring(3, 18).trim();</b>
+<b class="fc"><i>84</i>&nbsp;                this.sName = input.substring(19, 34).trim();</b>
+<b class="fc"><i>85</i>&nbsp;                this.credits = Double.parseDouble(input.substring(35));</b>
+<b class="fc"><i>86</i>&nbsp;                break;</b>
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;            //checking for bad input
+<i>89</i>&nbsp;            default:
+<b class="fc"><i>90</i>&nbsp;                System.out.println(&quot;ERROR: bad input, no valid transaction id found&quot;);</b>
+<b class="fc"><i>91</i>&nbsp;                System.exit(-1);</b>
+<i>92</i>&nbsp;        }
+<b class="fc"><i>93</i>&nbsp;    }</b>
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-03-29 02:19</div>
+</div>
+</body>
+</html>
