@@ -131,19 +131,23 @@ public class Driver {
 
     public static boolean deleteUser(ArrayList<User> users, ArrayList<Item> items, String transaction) {
         Transaction trans = new Transaction(transaction);
+        User del = null;
+        boolean check = false;
         String uName = trans.get_uName();
         for(User user: users) {
             if (uName.equals(user.getUsername())) {
                                 //removing the user
-                users.remove(user);
-                return true;
+                del = user;
+                check = true;
             }
         }
+        users.remove(del);
         //dealing with items related to the user
+        ArrayList<Item> toRemove = new ArrayList<>();
         for(Item item: items){
             //removing the items where user is the seller
             if(item.getSellerName().equals(uName)){
-                items.remove(item);
+                toRemove.add(item);
                 // System.out.println("Removed item: "+ item.getItemName()+"with seller " + uName);
             }
             //resetting the bid to 0 where the user has the highest bid
@@ -152,10 +156,13 @@ public class Driver {
                 // System.out.println("Reset the highest bid for item: "+ item.getItemName() + "to 0");
             }
         }
+        items.removeAll(toRemove);
         // System.out.println("Removed user: " + uName);
-
-        System.out.println("ERROR: <delete> transaction unsuccessful; username:" + trans.get_uName() + "not found");
-        return false;
+        if (!check) {
+            System.out.println("ERROR: <delete> transaction unsuccessful; username:" + trans.get_uName() + "not found");
+            return false;
+        }
+        return true;
     }
 
     public static boolean advertise(ArrayList<Item> items, String transaction) {
@@ -189,7 +196,7 @@ public class Driver {
                 for (User user2 : users) {
                     if (user2.getUsername().equals(trans.get_sName())){
                         user.setCredits( user.getCredits() + trans.getCredits() );
-                        user2.setCredits( user.getCredits() - trans.getCredits() );
+                        user2.setCredits( user2.getCredits() - trans.getCredits() );
                         return true;
                     }
                 }
