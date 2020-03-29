@@ -14,8 +14,8 @@ public class ItemTest {
     Item testItem = new Item(input);
 
     @Test
-    public void testSecondaryConstructor() throws Exception{
-        Item itm = new Item ("item_name", "reg_user", "admin", 100, 200.10);
+    public void testSecondaryItemConstructor() throws Exception{
+        Item itm = new Item ("item_name", "reg_user","admin",  100, 200.10);
         assertEquals(testItem.stringify(), itm.stringify());
     }
     @Test
@@ -74,7 +74,7 @@ public class ItemTest {
 
     @Test
     public void testSetHighBid() throws Exception {
-        Item itm = new Item();
+        Item itm = new Item("iname", "sname", "wname", 10, 10);
         itm.setHighBid(200.00);
         assertEquals(200.00, itm.getHighBid(), 0.001);
     }

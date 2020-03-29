@@ -1,103 +1,81 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.ExpectedSystemExit;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-/** 
-* Transaction Tester.
-*/ 
 public class TransactionTest {
-    Transaction bidTrans = new Transaction("04 item_name           reg_user        admin           00011");
-    Transaction refundTrans = new Transaction("05 existing_user   reg_user        000100.00");
-    Transaction advertiseTrans = new Transaction("03 item_name           reg_user        100 000010");
-    Transaction createTrans = new Transaction("01 new_user        SS 000001.00");
-    /**
-    *
-    * Method: getTransactionCode()
-    *
-    */
-    @Test
-    public void testGetTransactionCode() throws Exception {
-        assertEquals("04", bidTrans.getTransactionCode());
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
     }
 
-    /**
-    *
-    * Method: get_uName()
-    *
-    */
-    @Test
-    public void testGet_uName() throws Exception {
-        assertEquals("admin", bidTrans.get_uName());
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
     }
 
-    /**
-    *
-    * Method: get_sName()
-    *
-    */
     @Test
-    public void testGet_sName() throws Exception {
-        assertEquals("reg_user", bidTrans.get_sName());
+    public void test00Constructor() throws Exception {
+        Transaction t = new Transaction("00                             ");
+        assertEquals("00", t.getTransactionCode());
+        assertEquals("               ", t.get_uName());
+        assertEquals("  ", t.getUserType());
+        assertEquals(0.00, t.getCredits(), 0.001);
     }
 
-    /**
-    *
-    * Method: get_iName()
-    *
-    */
     @Test
-    public void testGet_iName() throws Exception {
-        assertEquals("item_name", bidTrans.get_iName());
+    public void test010206Constructors() throws Exception {
+        Transaction t = new Transaction("01 01testUUUUUUUUU T1 001500.00");
+        assertEquals("01", t.getTransactionCode());
+        assertEquals("01testUUUUUUUUU", t.get_uName());
+        assertEquals("T1", t.getUserType());
+        assertEquals(1500.00, t.getCredits(), 0.001);
     }
 
-    /**
-    *
-    * Method: getType()
-    *
-    */
     @Test
-    public void testGetType() throws Exception {
-        assertEquals("04", bidTrans.getType());
+    public void test03Constructor() throws Exception {
+        Transaction t = new Transaction("03 IIIIIIIIIIIIIIIIIII SSSSSSSSSSSSS 010 0010.01");
+        assertEquals("03", t.getTransactionCode());
+        assertEquals("IIIIIIIIIIIIIIIIIII", t.get_iName());
+        assertEquals("SSSSSSSSSSSSS", t.get_sName());
+        assertEquals(10, t.getDaysLeft());
+        assertEquals(10.01, t.getBid(), 0.001);
     }
 
-    /**
-    *
-    * Method: getCredits()
-    *
-    */
     @Test
-    public void testGetCredits() throws Exception {
-        assertEquals(100.00, refundTrans.getCredits(), 0.0);
+    public void test04Constructor() throws Exception {
+        Transaction t = new Transaction("04 IIIIIIIIIIIIIIIIIII SSSSSSSSSSSSSSS UUUUUUUUUUUUUUU 0001.2");
+        assertEquals("04", t.getTransactionCode());
+        assertEquals("IIIIIIIIIIIIIIIIIII", t.get_iName());
+        assertEquals("UUUUUUUUUUUUUUU", t.get_uName());
+        assertEquals("SSSSSSSSSSSSSSS", t.get_sName());
+        assertEquals(1.20, t.getBid(), 0.001);
     }
 
-    /**
-    *
-    * Method: getBid()
-    *
-    */
     @Test
-    public void testGetBid() throws Exception {
-        assertEquals(11, bidTrans.getBid(), 0.0);
+    public void test05Constructor() throws Exception {
+        Transaction t = new Transaction("05 UUUUUUUUUUUUUUU SSSSSSSSSSSSSSS 000000122");
+        assertEquals("05", t.getTransactionCode());
+        assertEquals("UUUUUUUUUUUUUUU", t.get_uName());
+        assertEquals("SSSSSSSSSSSSSSS", t.get_sName());
+        assertEquals(122.00, t.getCredits(), 0.001);
     }
 
-    /**
-    *
-    * Method: getDaysLeft()
-    *
-    */
+    @Rule
+    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
     @Test
-    public void testGetDaysLeft() throws Exception {
-        assertEquals(100, advertiseTrans.getDaysLeft());
+    public void testBadInputToConstructor() throws Exception {
+        exit.expectSystemExitWithStatus(-1);
+        Transaction t = new Transaction("not ok input");
+        assertEquals("ERROR: bad input, no valid transaction id found\n", outContent.toString());
     }
-
-    /**
-    *
-    * Method: getRawString()
-    *
-    */
-    @Test
-    public void testGetRawString() throws Exception {
-        assertEquals("new_user        SS 000001.00", createTrans.getRawString());
-    }
-
-} 
+}

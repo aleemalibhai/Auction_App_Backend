@@ -14,7 +14,7 @@ public class Item {
     }
 
     public String getSellerName() {
-        return sellerName;
+        return this.sellerName;
     }
 
     public void setSellerName(String sellerName) {
@@ -22,7 +22,7 @@ public class Item {
     }
 
     public String getWinningUser() {
-        return winningUser;
+        return this.winningUser;
     }
 
     public void setWinningUser(String winningUser) {
@@ -38,7 +38,7 @@ public class Item {
     }
 
     public double getHighBid() {
-        return highBid;
+        return this.highBid;
     }
 
     public void setHighBid(double highBid) {
