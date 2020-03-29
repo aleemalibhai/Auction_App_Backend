@@ -106,7 +106,7 @@ public class Driver {
             return true;
         }
         catch (IOException e){
-            System.out.println("ERROR: error in writing the file");
+            System.out.println("ERROR: given filename doesn't exist");
             return false;
         }
     }

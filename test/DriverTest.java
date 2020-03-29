@@ -104,14 +104,14 @@ public class DriverTest {
     public void testReadWithNonExistingFile()  {
         exit.expectSystemExitWithStatus(-1);
         ArrayList<String> al = Driver.readFile("thisobviouslydoesntexist.txt");
-        assertEquals("ERROR: thisobviouslydoesntexist.txt doesn't exist", outContent.toString());
+        assertEquals("ERROR: thisobviouslydoesntexist.txt doesn't exist\n", outContent.toString());
     }
 
     @Test
     public void testReadWithLockedExistingFile()  {
         exit.expectSystemExitWithStatus(-1);
         ArrayList<String> al = Driver.readFile("resources/filelocked.txt");
-        assertEquals("ERROR: could not open file resources/filelocked.txt", outContent.toString());;
+        assertEquals("ERROR: could not open file resources/filelocked.txt\n", outContent.toString());;
     }
 
     @Test
@@ -146,7 +146,7 @@ public class DriverTest {
         strings.add("test1");
         strings.add("test2");
         Driver.writeToFile(strings, "thisobviouslydoesntexist.txt");
-        assertEquals("ERROR: given filename doesn't exist", outContent.toString());
+        assertEquals("ERROR: given filename doesn't exist\n", outContent.toString());
     }
 
     @Test
@@ -156,7 +156,7 @@ public class DriverTest {
         strings.add("test1");
         strings.add("test2");
         Driver.writeToFile(strings, "resources/filelocked.txt");
-        assertEquals("ERROR: given filename doesn't exist", outContent.toString());
+        assertEquals("ERROR: given filename doesn't exist\n", outContent.toString());
     }
 
     /**
@@ -183,7 +183,7 @@ public class DriverTest {
         ArrayList<User> users = new ArrayList<>();
         users. add(new User("UUUUUUUUUUUUUUU", "AA", 123.89));
         String transaction = "01 UUUUUUUUUUUUUUU AA 000123.89";
-        String err = "ERROR: <create> username already exists, Transaction: " + transaction;
+        String err = "ERROR: <create> username already exists, Transaction: " + transaction + "\n";
         Driver.createUser(users, transaction);
 
         assertEquals(err, outContent.toString());
@@ -200,7 +200,6 @@ public class DriverTest {
 
         String transaction = "02 testu1          AA 000000000";
         Transaction t = new Transaction(transaction);
-        System.err.println(t.get_uName());
 
         boolean tf = Driver.deleteUser(users, items, transaction);
 
@@ -220,7 +219,7 @@ public class DriverTest {
         users.add(new User("testu1", "AA", 15));
         items.add(new Item("testiname", "testu1", "random", 10, 10.0));
         items.add(new Item("testiname2", "random", "testu1", 10, 15.0));
-        String err = "ERROR: <delete> transaction unsuccessful; username: testu2 not found";
+        String err = "ERROR: <delete> transaction unsuccessful; username: testu2 not found\n";
         String transaction = "02 testu2          AA 000000000";
 
         boolean tf = Driver.deleteUser(users, items, transaction);
@@ -251,7 +250,7 @@ public class DriverTest {
     public void testAdvertiseBadTransaction()  {
         ArrayList<Item> items = new ArrayList<>();
         String transaction = "03 IIIIIIIIIIIIIIIIIII SSSSSSSSSSSSS 000 000100";
-        String err = "ERROR: <advertise> transaction unsuccessful; number of days is <= 0";
+        String err = "ERROR: <advertise> transaction unsuccessful; number of days is <= 0\n";
 
         boolean tf = Driver.advertise(items, transaction);
 
@@ -284,7 +283,7 @@ public class DriverTest {
 
         String transaction = "05           user3           user2 000000050";
         boolean tf = Driver.refund(users, transaction);
-        String err = "Error: <refund> buyer or seller does not exist, Transaction: 05           user3           user2 000000050";
+        String err = "Error: <refund> buyer or seller does not exist, Transaction: 05           user3           user2 000000050\n";
 
         assertFalse(tf);
         assertEquals(100.25, users.get(0).getCredits(), 0.001);
@@ -310,7 +309,7 @@ public class DriverTest {
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item("IIIIIIIIIIIIIIIIIII", "SSSSSSSSSSSSSSS", "UUUUUUUUUUUUUU", 10, 100));
         String transaction = "04 IIIIIIIIIIIIIIIPIII SSSSSSSSSSSSSSS            test 001001";
-        String err = "ERROR: <bid> transaction unsuccessful; incorrect item/seller name";
+        String err = "ERROR: <bid> transaction unsuccessful; incorrect item/seller name\n";
 
         boolean tf = Driver.bid(items, transaction);
 
@@ -325,7 +324,7 @@ public class DriverTest {
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item("IIIIIIIIIIIIIIIIIII", "SSSSSSSSSSSSSSS", "UUUUUUUUUUUUUU", 10, 100));
         String transaction = "04 IIIIIIIIIIIIIIIIIII SSSSSSVSSSSSSSS            test 001001";
-        String err = "ERROR: <bid> transaction unsuccessful; incorrect item/seller name";
+        String err = "ERROR: <bid> transaction unsuccessful; incorrect item/seller name\n";
 
         boolean tf = Driver.bid(items, transaction);
 
@@ -416,7 +415,7 @@ public class DriverTest {
         users.add(new User("name", "AA", 101.00));
         users.add(new User("name2", "AA", 100.00));
         items.add(new Item("iname", "name2", "name", -1, 100.00));
-        String err = "Error <end> item: iname has negative days left closing now";
+        String err = "Error <end> item: iname has negative days left closing now\n";
         Driver.closeDay(users, items);
 
         assertEquals(0, items.size());
