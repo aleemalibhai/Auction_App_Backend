@@ -1,0 +1,10 @@
+issues:
+
+front end relied on an existing daily transaction file. 
+	-> Altered code to create one if necassary
+
+front end did not fail back to input line when entering bad input. This caused the program to behave poorly when automating input. (would loop asking for username on create user if an existing user was entered)
+	-> Altered code to return to main input loop on bad input (graceful fail)
+
+old transaction files would accumulate after each day.
+	-> Deleted old daily transaction files after merging them 
