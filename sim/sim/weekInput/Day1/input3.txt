@@ -1,0 +1,6 @@
+login
+regUser
+bid
+item3
+600
+logout

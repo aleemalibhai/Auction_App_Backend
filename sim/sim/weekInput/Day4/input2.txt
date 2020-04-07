@@ -1,0 +1,7 @@
+login
+user5
+advertise
+item6
+50
+5
+logout

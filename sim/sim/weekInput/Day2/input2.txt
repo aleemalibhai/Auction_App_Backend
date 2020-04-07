@@ -1,0 +1,6 @@
+login
+adminUser
+addCredit
+regUser
+200
+logout

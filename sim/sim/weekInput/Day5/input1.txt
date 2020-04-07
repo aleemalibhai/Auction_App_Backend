@@ -1,0 +1,7 @@
+login
+adminUser
+create
+userDel
+SS
+1000
+logout

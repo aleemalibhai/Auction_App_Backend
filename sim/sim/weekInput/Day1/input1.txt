@@ -1,0 +1,6 @@
+login
+adminUser
+bid
+item1
+100
+logout

@@ -1,4 +1,6 @@
-goodUser        SS 020000.00
+goodUser        FS 020000.00
 adminUser       AA 999999.00
 regUser         BS 950000.00
 fullUser        FS 111111.11
+item1Seller     FS 000999.99
+item2Seller     FS 001234.00

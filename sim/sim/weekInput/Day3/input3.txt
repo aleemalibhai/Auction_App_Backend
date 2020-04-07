@@ -1,0 +1,8 @@
+login
+adminUser
+create
+user5
+FS
+2000
+logout
+

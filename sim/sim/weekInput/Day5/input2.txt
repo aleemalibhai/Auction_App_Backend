@@ -1,0 +1,7 @@
+login
+userDel
+advertise
+itemDel
+100
+2
+logout

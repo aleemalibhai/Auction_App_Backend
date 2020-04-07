@@ -1,0 +1,6 @@
+login
+item2Seller
+refund
+goodUser
+100
+logout

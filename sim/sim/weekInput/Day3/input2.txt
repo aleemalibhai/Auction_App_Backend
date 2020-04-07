@@ -1,0 +1,6 @@
+login
+item1Seller
+item4
+bid
+999
+logout
