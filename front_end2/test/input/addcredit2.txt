@@ -1,0 +1,5 @@
+admin
+addcredit
+100
+invalid_user
+exit

@@ -1,0 +1,29 @@
+#!/bin/sh
+# For text colouring purpose
+BLUE='\033[1;34m'
+NC='\033[0m'
+# Uncomment line 4 - 7 to recompile the program
+# cd ../src         # Move to src folder
+# make              # Compile the program name "auction-system"
+# make clean        # Clean directory
+# cd ../test        # Move to test directory
+# Declare location of the program
+program="../src/auction-system"
+# Using test in phase 1 run all the input one by one
+# Then stores all of the output under actual_output folder
+DIRECTORY=./input/
+for file in `find ${DIRECTORY} -type f`; do
+ DIR=`dirname ${file}`
+   NAME=`basename ${file}`
+   NEW=`echo ${NAME%%.*} | sed 's/[a-zA-Z_]\+\././'`
+   echo
+   echo "${BLUE}Input: ${NEW}.txt${NC}"
+   $program < ./input/$NEW.txt > ./actual_output/$NEW.out
+done
+# Using expected output in phase 1, compare with the actual output
+# If there are difference, potential error
+# TO BE EVALUATED: Then store the result under result folder
+#foreach i (*)
+#    echo “checking outputs of test $i”
+#    diff ./actual_output/$i.atf ./expected_output/$i.etf #> ./result/$i.out
+#end

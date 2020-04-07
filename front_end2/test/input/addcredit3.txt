@@ -1,0 +1,5 @@
+admin
+addcredit
+1001
+reg_user
+exit

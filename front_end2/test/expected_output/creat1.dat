@@ -1,0 +1,15 @@
+[DONE] Read User Account  File
+Welcome to auction site!
+Enter username:
+[DONE] Read Available Items File
+Welcome admin!
+Enter new username:
+User types
+    AA : Admin 
+    FS : Full-standard
+    BS : buy-standard
+    SS : Sell Standard
+Enter user type:
+Enter credit value:
+[DONE] User Created
+01 new_user        SS 000001.00

@@ -1,0 +1,13 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter item name: 
+Enter minimum bid: 
+[ERROR] Maximum bidding is 999.99
+
+Enter command: 
+Good bye!

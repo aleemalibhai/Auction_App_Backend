@@ -1,0 +1,14 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter item name: 
+Enter seller's username: 
+Current highest bid is 1
+Please enter new bid amount: [ERROR] New bid needs to be higher than previous bid 
+
+Enter command: 
+Good bye!

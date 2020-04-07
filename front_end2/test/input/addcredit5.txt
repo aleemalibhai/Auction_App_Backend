@@ -1,0 +1,5 @@
+admin
+addcredit
+999
+new_user
+exit

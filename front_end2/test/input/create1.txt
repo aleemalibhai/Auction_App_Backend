@@ -1,0 +1,6 @@
+admin
+create
+new_user
+SS
+1
+exit

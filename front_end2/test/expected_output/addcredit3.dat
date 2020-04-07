@@ -1,0 +1,13 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter amount: [ERROR]: Credit to be added should not exceed 1000
+
+Enter command: 
+Invalid input
+Enter command: 
+Good bye!

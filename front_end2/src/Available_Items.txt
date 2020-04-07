@@ -1,0 +1,2 @@
+item_name           reg_user        admin           100 000011
+END

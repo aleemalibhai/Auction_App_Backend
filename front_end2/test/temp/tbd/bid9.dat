@@ -1,0 +1,10 @@
+[DONE] Read User Account File
+Welcome to auction site!
+Enter username:
+[DONE] Read Available Items File
+Welcome admin!
+Enter item name:
+Enter seller’s username:
+Current highest bid is $998.99
+Please enter new bid amount:
+[ERROR] Invalid input

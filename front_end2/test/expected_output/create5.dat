@@ -1,0 +1,19 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter new username: 
+User Types:
+	AA: Admin 
+	FS: Full-standard 
+	BS: Buy-standard 
+	SS: Sell-standard
+
+Enter user type: 
+[ERROR] Invalid options
+
+Enter command: 
+Good bye!

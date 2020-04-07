@@ -1,0 +1,15 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter seller's username: 
+Enter buyer's username: 
+Enter amount of credit to be transferred: 
+[DONE] Funds refunded
+05 reg_user        existing_user   000300.00
+
+Enter command: 
+Good bye!

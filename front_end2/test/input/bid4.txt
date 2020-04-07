@@ -1,0 +1,5 @@
+admin
+bid
+item_name
+invalid_seller
+exit

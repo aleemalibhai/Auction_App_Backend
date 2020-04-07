@@ -1,0 +1,6 @@
+valid_user
+advertise
+item_name
+valid_bid
+valid_days
+logout

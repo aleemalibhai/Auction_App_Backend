@@ -1,0 +1,6 @@
+admin
+refund
+valid_user
+new_user
+100
+exit

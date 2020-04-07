@@ -1,0 +1,5 @@
+admin
+create
+new_user_test
+invalid_type
+exit

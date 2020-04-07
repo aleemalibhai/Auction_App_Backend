@@ -1,0 +1,6 @@
+admin
+advertise
+item_name
+10
+101
+exit

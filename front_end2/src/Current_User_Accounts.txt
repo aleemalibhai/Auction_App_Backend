@@ -1,0 +1,7 @@
+admin          AA 999999.45
+valid_user     FS 002300.01
+reg_user       SS 001000.30
+existing_user  BS 000200.41
+new_user       SS 999997.99
+target_user    SS 999997.99
+END

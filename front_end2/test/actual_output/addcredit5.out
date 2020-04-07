@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+=======
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter amount: 
+Enter target username: [ERROR] can't perform transaction as tranfer exceeds max credit limit
+
+Enter command: 
+Good bye!
+>>>>>>> dfbe078118e720e9497db914c484a2b13db30fb5

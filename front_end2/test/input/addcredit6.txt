@@ -1,0 +1,4 @@
+reg_user
+addcredit
+100
+exit

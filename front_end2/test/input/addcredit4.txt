@@ -1,0 +1,5 @@
+admin
+addcredit
+0
+reg_user
+exit

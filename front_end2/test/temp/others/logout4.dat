@@ -1,0 +1,16 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username:
+
+[DONE] Read Available Items File
+
+Welcome admin!
+Enter transaction:
+Enter item name:
+Enter minimum bid:
+Enter days of auction:
+
+[WRITE] Write to Daily Transaction File
+
+[ERROR] Error saving transaction log to Daily Transaction File

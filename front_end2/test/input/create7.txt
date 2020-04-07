@@ -1,0 +1,4 @@
+admin
+create
+create
+exit

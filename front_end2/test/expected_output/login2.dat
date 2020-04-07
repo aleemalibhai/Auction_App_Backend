@@ -1,0 +1,8 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: invalid_user
+[ERROR] Invalid username
+Enter username: exit
+
+Good bye!

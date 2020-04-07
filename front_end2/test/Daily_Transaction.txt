@@ -1,0 +1,192 @@
+00 valid_user      FS 002300.00
+01 new_user        SS 000001.00
+00 admin           AA 100000.00
+02 target_user     BS 002000.00
+00 admin           AA 100000.00
+03 item_name           reg_user        100 000010
+00 admin           AA 100000.00
+04 item_name           reg_user        admin           00011
+00 admin           AA 100000.00
+05 existing_user   reg_user        000100.00
+00 admin           AA 100000.00
+06 reg_user        SS 000100.00
+00 admin           AA 100000.00
+00 admin           AA 999999.44
+END
+00 admin           AA 999999.44
+END
+00 admin           AA 999999.44
+END
+00 valid_user      FS 002300.01
+END
+01 terryyyyy       AA 000123.00
+00 admin           AA 999999.44
+END
+03 terere              admin           23023 033.00
+06 valid_user      FS 000234.00
+00 admin           AA 999999.44
+END
+03 terere              admin           23023 033.00
+06 valid_user      FS 000234.00
+00 admin           AA 999999.44
+03 testing             valid_user      42042 022.00
+03 item2               valid_user      21021 334.00
+00 valid_user      FS 002300.01
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 valid_user      FS 002300.01
+END
+00 admin           AA 999999.44
+END
+01 testb_user      FS 000005.00
+00 admin           AA 999999.44
+END

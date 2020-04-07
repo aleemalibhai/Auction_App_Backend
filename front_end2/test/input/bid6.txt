@@ -1,0 +1,6 @@
+existing_user
+bid
+item_name
+reg_user
+1.25
+exit

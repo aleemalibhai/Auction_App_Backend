@@ -1,0 +1,6 @@
+admin
+bid
+item_name
+reg_user
+one / -1
+exit

@@ -1,0 +1,5 @@
+admin
+advertise
+item_name
+1000
+exit

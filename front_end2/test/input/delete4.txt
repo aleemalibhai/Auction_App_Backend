@@ -1,0 +1,4 @@
+admin
+delete
+non_user
+exit

@@ -1,0 +1,6 @@
+reg_user
+advertise
+item_name
+100
+10
+exit

@@ -1,0 +1,4 @@
+admin
+create
+16_characters_username
+exit

@@ -1,0 +1,16 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter new username: 
+[ERROR] Username has been taken
+
+Enter command: 
+Invalid input
+Enter command: 
+Invalid input
+Enter command: 
+Good bye!

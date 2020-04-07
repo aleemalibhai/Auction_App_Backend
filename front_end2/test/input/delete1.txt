@@ -1,0 +1,4 @@
+admin
+delete
+target_user
+exit

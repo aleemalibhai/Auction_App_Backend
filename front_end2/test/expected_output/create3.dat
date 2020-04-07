@@ -1,0 +1,12 @@
+[DONE] Read User Account File
+
+Welcome to auction site!
+Enter username: admin
+[DONE] Read Available Items File
+
+Enter command: 
+Enter new username: 
+[ERROR] Username has a 15 character limit
+
+Enter command: 
+Good bye!
